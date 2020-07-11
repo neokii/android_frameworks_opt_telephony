@@ -922,6 +922,11 @@ public final class SmsApplication {
     public static boolean canSmsAppHandleAlwaysAsk(Context context) {
         final ComponentName defaultMmsApplication = SmsApplication.getDefaultMmsApplication(context,
                 false);
+        
+        if (defaultMmsApplication == null) {
+            return true;
+        }
+        
         return TextUtils.equals(DEFAULT_SYSTEM_MMS_PACKAGE_NAME,
                 defaultMmsApplication.getPackageName());
     }
